@@ -1,4 +1,4 @@
-para ejecutar el codigo, se debe hacer uso de visual studio code y descargar cada archivo.py y colocar cada archvio dentro de una carpeta.
+para ejecutar el codigo de cada programa, se debe hacer uso de visual studio code y descargar cada archivo.py de cada programa y colocar cada archvio dentro de una carpeta.
 
 una vez descargados los archivos en la carpeta en el escritorio o nuestro ordenador, se debe de abrir con visual studio y para ejecutar el codigo se deben de seguir los siguientes pasos:
 
