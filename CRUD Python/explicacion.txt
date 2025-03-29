@@ -1,0 +1,42 @@
+# Explicación del Código y Relación de Tablas
+
+## Funcionamiento del Código
+
+Este código implementa un sistema CRUD (Crear, Leer, Actualizar, Eliminar) para gestionar equipos y jugadores en una liga de eSports usando PostgreSQL y Python con la librería `psycopg3`. A continuación, se describen sus componentes principales:
+
+1. Conexión a la base de datos:
+   - La función `conectar()` establece una conexión con PostgreSQL utilizando los parámetros de host, nombre de la base de datos (`esports_db`), usuario (`postgres`) y contraseña.
+
+2. Creación de tablas:
+   - Al iniciar el programa, la función `crear_tablas()` genera dos tablas:
+     - **equipos**: Almacena información de equipos (ID único, nombre, país, entrenador).
+     - **jugadores**: Almacena información de jugadores (ID automático, nickname, rol y ID del equipo al que pertenecen).
+
+3. Operaciones CRUD:
+     - Equipos:
+
+     - Crear: crear_equipo(id, nombre, país, entrenador).
+
+     - Leer: leer_equipos()` muestra todos los equipos registrados.
+
+     - Actualizar: actualizar_equipo(id, nuevo_nombre) modifica el nombre de un equipo.
+
+     - Eliminar: `eliminar_equipo(id)` borra un equipo y sus jugadores asociados (por `ON DELETE CASCADE`).
+
+     - Jugadores:
+     - Crear: `crear_jugador(nickname, rol, equipo_id)`.
+     - Leer: `leer_jugadores()` muestra todos los jugadores con el nombre de su equipo.
+
+4. Menú interactivo:
+   - Permite al usuario seleccionar operaciones mediante un menú numérico.
+   - Valida entradas (ej: IDs deben ser números enteros).
+
+5.  Manejo de errores:
+   - Captura excepciones de PostgreSQL (ej: IDs duplicados, conexiones fallidas) y muestra mensajes claros.
+
+## Relación entre Tablas
+
+Las tablas se relacionan mediante una **clave foránea**:
+- La tabla `jugadores` incluye el campo `equipo_id`, que referencia al `id` de la tabla `equipos`.
+- **ON DELETE CASCADE**: Si se elimina un equipo, todos sus jugadores asociados se borran automáticamente para mantener la integridad de los datos.
+
